@@ -3,5 +3,5 @@ namespace Leal;
 [Serializable]
 internal class Version
 {
-    public const string Current = "0.0.12";
+    public const string Current = "0.0.13";
 }
