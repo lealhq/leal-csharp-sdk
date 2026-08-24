@@ -6,9 +6,9 @@
     "namespace": "Leal",
     "client-class-name": "LealClient"
   },
-  "originGitCommit": "fc465c928d5f329d4b070145067bbe966a5bbaaf",
+  "originGitCommit": "79858519a5b20df3986fde6a58009acebe1a017d",
   "originGitCommitIsDirty": false,
   "invokedBy": "ci",
   "ciProvider": "github",
-  "sdkVersion": "0.0.6"
+  "sdkVersion": "0.0.7"
 }
