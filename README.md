@@ -3,10 +3,19 @@
 [![fern shield](https://img.shields.io/badge/%F0%9F%8C%BF-Built%20with%20Fern-brightgreen)](https://buildwithfern.com?utm_source=github&utm_medium=github&utm_campaign=readme&utm_source=https%3A%2F%2Fgithub.com%2Flealhq%2Fleal-csharp-sdk)
 [![nuget shield](https://img.shields.io/nuget/v/Leal)](https://nuget.org/packages/Leal)
 
-The Leal C# library provides convenient access to the Leal APIs from C#.
+Digital loyalty stamp cards in Apple Wallet and Google Wallet, for local
+businesses. This library covers the whole [Leal](https://www.getleal.com)
+API, so you can enrol customers, add stamps, redeem rewards and read a
+card's wallet links from your own application.
+
+- Guides and a page for every language: [www.getleal.com/developers](https://www.getleal.com/developers)
+- Create an API token: [app.getleal.com/api_tokens](https://app.getleal.com/api_tokens)
+- The OpenAPI description these libraries are built from: [www.getleal.com/openapi.json](https://www.getleal.com/openapi.json)
+
 
 ## Table of Contents
 
+- [Documentation](#documentation)
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Reference](#reference)
@@ -21,6 +30,10 @@ The Leal C# library provides convenient access to the Leal APIs from C#.
   - [Additional Query Parameters](#additional-query-parameters)
   - [Additional Body Properties](#additional-body-properties)
 - [Contributing](#contributing)
+
+## Documentation
+
+API reference documentation is available [here](https://app.getleal.com/docs/api.html).
 
 ## Requirements
 
@@ -47,11 +60,13 @@ Instantiate and use the client with the following:
 using Leal;
 
 var client = new LealClient("TOKEN");
-await client.Cards.CreateAsync(
-    new CreateCardsRequest
+await client.CustomerCards.StampAsync(
+    new StampCustomerCardsRequest
     {
         AccountId = 1,
-        Card = new CreateCardsRequestCard { Name = "name" },
+        CustomerId = 1,
+        Id = 1,
+        Stamps = 1,
     }
 );
 ```
@@ -78,7 +93,7 @@ will be thrown.
 using Leal;
 
 try {
-    var response = await client.Cards.CreateAsync(...);
+    var response = await client.CustomerCards.StampAsync(...);
 } catch (LealClientApiException e) {
     System.Console.WriteLine(e.Body);
     System.Console.WriteLine(e.StatusCode);
@@ -121,7 +136,7 @@ Which status codes are retried depends on the `retryStatusCodes` generator confi
 Use the `MaxRetries` request option to configure this behavior.
 
 ```csharp
-var response = await client.Cards.CreateAsync(
+var response = await client.CustomerCards.StampAsync(
     ...,
     new RequestOptions {
         MaxRetries = 0 // Override MaxRetries at the request level
@@ -134,7 +149,7 @@ var response = await client.Cards.CreateAsync(
 The SDK defaults to a 30 second timeout. Use the `Timeout` option to configure this behavior.
 
 ```csharp
-var response = await client.Cards.CreateAsync(
+var response = await client.CustomerCards.StampAsync(
     ...,
     new RequestOptions {
         Timeout = TimeSpan.FromSeconds(3) // Override timeout to 3s
@@ -150,7 +165,7 @@ Access raw HTTP response data (status code, headers, URL) alongside parsed respo
 using Leal;
 
 // Access raw response data (status code, headers, etc.) alongside the parsed response
-var result = await client.Cards.CreateAsync(...).WithRawResponse();
+var result = await client.CustomerCards.StampAsync(...).WithRawResponse();
 
 // Access the parsed data
 var data = result.Data;
@@ -167,7 +182,7 @@ if (headers.TryGetValue("X-Request-Id", out var requestId))
 }
 
 // For the default behavior, simply await without .WithRawResponse()
-var parsedData = await client.Cards.CreateAsync(...);
+var parsedData = await client.CustomerCards.StampAsync(...);
 
 // .WithRawResponse() also works on streaming endpoints (returns IAsyncEnumerable<T> + RawResponse)
 // and on endpoints with no response body (returns RawResponse only).
@@ -178,7 +193,7 @@ var parsedData = await client.Cards.CreateAsync(...);
 If you would like to send additional headers as part of the request, use the `AdditionalHeaders` request option.
 
 ```csharp
-var response = await client.Cards.CreateAsync(
+var response = await client.CustomerCards.StampAsync(
     ...,
     new RequestOptions {
         AdditionalHeaders = new Dictionary<string, string?>
@@ -194,7 +209,7 @@ var response = await client.Cards.CreateAsync(
 If you would like to send additional query parameters as part of the request, use the `AdditionalQueryParameters` request option.
 
 ```csharp
-var response = await client.Cards.CreateAsync(
+var response = await client.CustomerCards.StampAsync(
     ...,
     new RequestOptions {
         AdditionalQueryParameters = new Dictionary<string, string>
@@ -211,7 +226,7 @@ If you would like to send additional body properties as part of the request, use
 This is only applied to JSON requests.
 
 ```csharp
-var response = await client.Cards.CreateAsync(
+var response = await client.CustomerCards.StampAsync(
     ...,
     new RequestOptions {
         AdditionalBodyProperties = new Dictionary<string, object>
