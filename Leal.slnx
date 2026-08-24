@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="src/Leal.Test/Leal.Test.csproj" />
+  <Project Path="src/Leal/Leal.csproj" />
+</Solution>
