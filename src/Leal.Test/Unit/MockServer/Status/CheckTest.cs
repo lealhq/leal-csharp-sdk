@@ -23,7 +23,18 @@ public class CheckTest : BaseMockServerTest
                 "scope": "scope",
                 "window_seconds": 1
               },
-              "status": "status"
+              "status": "status",
+              "versioning": {
+                "current": "current",
+                "deprecated": [
+                  "deprecated"
+                ],
+                "policy_url": "policy_url",
+                "signalling": "signalling",
+                "supported": [
+                  "supported"
+                ]
+              }
             }
             """;
 

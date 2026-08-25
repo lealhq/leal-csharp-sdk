@@ -112,6 +112,18 @@ public partial class LocationsClient : ILocationsClient
                                 Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
                             }
                         );
+                    case 410:
+                        throw new GoneError(
+                            JsonUtils.Deserialize<Error>(responseBody),
+                            rawResponse: new Leal.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
                     case 429:
                         throw new TooManyRequestsError(
                             JsonUtils.Deserialize<Error>(responseBody),
@@ -234,6 +246,18 @@ public partial class LocationsClient : ILocationsClient
                         );
                     case 404:
                         throw new NotFoundError(
+                            JsonUtils.Deserialize<Error>(responseBody),
+                            rawResponse: new Leal.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
+                    case 410:
+                        throw new GoneError(
                             JsonUtils.Deserialize<Error>(responseBody),
                             rawResponse: new Leal.RawResponse()
                             {
@@ -387,6 +411,18 @@ public partial class LocationsClient : ILocationsClient
                                 Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
                             }
                         );
+                    case 410:
+                        throw new GoneError(
+                            JsonUtils.Deserialize<Error>(responseBody),
+                            rawResponse: new Leal.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
                     case 429:
                         throw new TooManyRequestsError(
                             JsonUtils.Deserialize<Error>(responseBody),
@@ -482,6 +518,18 @@ public partial class LocationsClient : ILocationsClient
                         );
                     case 404:
                         throw new NotFoundError(
+                            JsonUtils.Deserialize<Error>(responseBody),
+                            rawResponse: new Leal.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
+                    case 410:
+                        throw new GoneError(
                             JsonUtils.Deserialize<Error>(responseBody),
                             rawResponse: new Leal.RawResponse()
                             {
@@ -615,6 +663,18 @@ public partial class LocationsClient : ILocationsClient
                         );
                     case 404:
                         throw new NotFoundError(
+                            JsonUtils.Deserialize<Error>(responseBody),
+                            rawResponse: new Leal.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
+                    case 410:
+                        throw new GoneError(
                             JsonUtils.Deserialize<Error>(responseBody),
                             rawResponse: new Leal.RawResponse()
                             {

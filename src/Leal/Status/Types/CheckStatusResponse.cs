@@ -50,6 +50,9 @@ public record CheckStatusResponse : IJsonOnDeserialized
     [JsonPropertyName("status")]
     public required string Status { get; set; }
 
+    [JsonPropertyName("versioning")]
+    public required CheckStatusResponseVersioning Versioning { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 
