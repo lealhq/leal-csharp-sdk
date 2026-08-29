@@ -30,6 +30,24 @@ public record GetPostersResponse : IJsonOnDeserialized
     public required int CardId { get; set; }
 
     /// <summary>
+    /// Whether the public signup form collects email
+    /// </summary>
+    [JsonPropertyName("collect_email")]
+    public required bool CollectEmail { get; set; }
+
+    /// <summary>
+    /// Whether the public signup form collects phone number
+    /// </summary>
+    [JsonPropertyName("collect_phone")]
+    public required bool CollectPhone { get; set; }
+
+    /// <summary>
+    /// Which contact fields appear on the public signup form: 'email_and_phone', 'email_only', or 'phone_only'
+    /// </summary>
+    [JsonPropertyName("contact_collection_mode")]
+    public required string ContactCollectionMode { get; set; }
+
+    /// <summary>
     /// ISO 8601 creation timestamp
     /// </summary>
     [JsonPropertyName("created_at")]
@@ -48,6 +66,12 @@ public record GetPostersResponse : IJsonOnDeserialized
     public required int Id { get; set; }
 
     /// <summary>
+    /// Minimum customer age required for signup
+    /// </summary>
+    [JsonPropertyName("minimum_age")]
+    public required double MinimumAge { get; set; }
+
+    /// <summary>
     /// Paper size the poster is laid out for
     /// </summary>
     [JsonPropertyName("paper_size")]
@@ -64,6 +88,24 @@ public record GetPostersResponse : IJsonOnDeserialized
     /// </summary>
     [JsonPropertyName("qr_code_url")]
     public required string QrCodeUrl { get; set; }
+
+    /// <summary>
+    /// Whether date of birth is required on the public signup form
+    /// </summary>
+    [JsonPropertyName("require_birthday")]
+    public required bool RequireBirthday { get; set; }
+
+    /// <summary>
+    /// Whether email is required when it is collected
+    /// </summary>
+    [JsonPropertyName("require_email")]
+    public required bool RequireEmail { get; set; }
+
+    /// <summary>
+    /// Whether phone number is required when it is collected
+    /// </summary>
+    [JsonPropertyName("require_phone")]
+    public required bool RequirePhone { get; set; }
 
     /// <summary>
     /// Hex accent colour

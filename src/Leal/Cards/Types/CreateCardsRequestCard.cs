@@ -12,10 +12,22 @@ public record CreateCardsRequestCard : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     /// <summary>
+    /// Up to two extra front-of-pass fields. Blank values are ignored.
+    /// </summary>
+    [JsonPropertyName("auxiliary_fields")]
+    public IEnumerable<string>? AuxiliaryFields { get; set; }
+
+    /// <summary>
     /// Hex colour for the card background (e.g. '#6B4226')
     /// </summary>
     [JsonPropertyName("card_color")]
     public string? CardColor { get; set; }
+
+    /// <summary>
+    /// Card expiry timestamp (ISO 8601)
+    /// </summary>
+    [JsonPropertyName("expires_at")]
+    public string? ExpiresAt { get; set; }
 
     /// <summary>
     /// Optional header text displayed on the card
@@ -34,6 +46,18 @@ public record CreateCardsRequestCard : IJsonOnDeserialized
     /// </summary>
     [JsonPropertyName("name")]
     public required string Name { get; set; }
+
+    /// <summary>
+    /// Whether wallet passes show the member name field
+    /// </summary>
+    [JsonPropertyName("show_member_field")]
+    public bool? ShowMemberField { get; set; }
+
+    /// <summary>
+    /// Whether wallet passes show the stamps-to-reward field
+    /// </summary>
+    [JsonPropertyName("show_stamps_to_reward_field")]
+    public bool? ShowStampsToRewardField { get; set; }
 
     /// <summary>
     /// Hex colour for stamp backgrounds

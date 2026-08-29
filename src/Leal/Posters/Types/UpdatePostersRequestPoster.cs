@@ -18,6 +18,18 @@ public record UpdatePostersRequestPoster : IJsonOnDeserialized
     public bool? Active { get; set; }
 
     /// <summary>
+    /// Which contact fields appear on the public signup form
+    /// </summary>
+    [JsonPropertyName("contact_collection_mode")]
+    public string? ContactCollectionMode { get; set; }
+
+    /// <summary>
+    /// Minimum customer age required for signup. Requires require_birthday to be true.
+    /// </summary>
+    [JsonPropertyName("minimum_age")]
+    public double? MinimumAge { get; set; }
+
+    /// <summary>
     /// Print size – one of: a4, a5, a6, letter
     /// </summary>
     [JsonPropertyName("paper_size")]
@@ -28,6 +40,24 @@ public record UpdatePostersRequestPoster : IJsonOnDeserialized
     /// </summary>
     [JsonPropertyName("primary_color")]
     public string? PrimaryColor { get; set; }
+
+    /// <summary>
+    /// Whether date of birth is required on the public signup form
+    /// </summary>
+    [JsonPropertyName("require_birthday")]
+    public bool? RequireBirthday { get; set; }
+
+    /// <summary>
+    /// Whether email is required when it is collected
+    /// </summary>
+    [JsonPropertyName("require_email")]
+    public bool? RequireEmail { get; set; }
+
+    /// <summary>
+    /// Whether phone number is required when it is collected
+    /// </summary>
+    [JsonPropertyName("require_phone")]
+    public bool? RequirePhone { get; set; }
 
     /// <summary>
     /// Secondary brand color as a hex string

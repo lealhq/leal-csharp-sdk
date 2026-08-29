@@ -18,6 +18,12 @@ public record CreateCardsResponse : IJsonOnDeserialized
     public required string ArchivedAt { get; set; }
 
     /// <summary>
+    /// Up to two extra front-of-pass fields
+    /// </summary>
+    [JsonPropertyName("auxiliary_fields")]
+    public IEnumerable<string> AuxiliaryFields { get; set; } = new List<string>();
+
+    /// <summary>
     /// Hex colour for the card background (e.g. '#6B4226')
     /// </summary>
     [JsonPropertyName("card_color")]
@@ -34,6 +40,12 @@ public record CreateCardsResponse : IJsonOnDeserialized
     /// </summary>
     [JsonPropertyName("customer_cards_count")]
     public required int CustomerCardsCount { get; set; }
+
+    /// <summary>
+    /// ISO 8601 timestamp when the card expires, or null if it does not expire
+    /// </summary>
+    [JsonPropertyName("expires_at")]
+    public required string ExpiresAt { get; set; }
 
     /// <summary>
     /// Optional header text displayed on the card
@@ -64,6 +76,18 @@ public record CreateCardsResponse : IJsonOnDeserialized
     /// </summary>
     [JsonPropertyName("rewards_count")]
     public required int RewardsCount { get; set; }
+
+    /// <summary>
+    /// Whether wallet passes show the member name field
+    /// </summary>
+    [JsonPropertyName("show_member_field")]
+    public required bool ShowMemberField { get; set; }
+
+    /// <summary>
+    /// Whether wallet passes show the stamps-to-reward field
+    /// </summary>
+    [JsonPropertyName("show_stamps_to_reward_field")]
+    public required bool ShowStampsToRewardField { get; set; }
 
     /// <summary>
     /// Hex colour for stamp backgrounds

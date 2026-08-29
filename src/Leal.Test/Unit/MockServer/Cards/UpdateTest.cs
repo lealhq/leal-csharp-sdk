@@ -21,14 +21,20 @@ public class UpdateTest : BaseMockServerTest
         const string mockResponse = """
             {
               "archived_at": "archived_at",
+              "auxiliary_fields": [
+                "auxiliary_fields"
+              ],
               "card_color": "card_color",
               "created_at": "created_at",
               "customer_cards_count": 1,
+              "expires_at": "expires_at",
               "header_text": "header_text",
               "id": 1,
               "initial_stamps": 1,
               "name": "name",
               "rewards_count": 1,
+              "show_member_field": true,
+              "show_stamps_to_reward_field": true,
               "stamp_background_color": "stamp_background_color",
               "stamp_color": "stamp_color",
               "stamp_icon": "stamp_icon",
