@@ -40,6 +40,7 @@ public class UpdateTest : BaseMockServerTest
               "stamp_icon": "stamp_icon",
               "stamps_required": 1,
               "strip_color": "strip_color",
+              "strip_opacity": 1.1,
               "strip_preset": "strip_preset",
               "strip_type": "strip_type",
               "text_color": "text_color",

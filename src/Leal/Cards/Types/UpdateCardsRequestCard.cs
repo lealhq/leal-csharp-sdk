@@ -90,6 +90,12 @@ public record UpdateCardsRequestCard : IJsonOnDeserialized
     public string? StripColor { get; set; }
 
     /// <summary>
+    /// Opacity (0–100) of the strip background over the card colour. 100 renders the colour or image exactly as supplied
+    /// </summary>
+    [JsonPropertyName("strip_opacity")]
+    public double? StripOpacity { get; set; }
+
+    /// <summary>
     /// Preset strip image identifier
     /// </summary>
     [JsonPropertyName("strip_preset")]
