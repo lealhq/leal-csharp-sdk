@@ -9,5 +9,6 @@ public partial interface ILealClient
     public ILocationsClient Locations { get; }
     public IPostersClient Posters { get; }
     public IRewardsClient Rewards { get; }
+    public IWebhookSubscriptionsClient WebhookSubscriptions { get; }
     public IStatusClient Status { get; }
 }

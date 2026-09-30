@@ -40,6 +40,7 @@ public partial class LealClient : ILealClient
         Locations = new LocationsClient(_client);
         Posters = new PostersClient(_client);
         Rewards = new RewardsClient(_client);
+        WebhookSubscriptions = new WebhookSubscriptionsClient(_client);
         Status = new StatusClient(_client);
     }
 
@@ -56,6 +57,8 @@ public partial class LealClient : ILealClient
     public IPostersClient Posters { get; }
 
     public IRewardsClient Rewards { get; }
+
+    public IWebhookSubscriptionsClient WebhookSubscriptions { get; }
 
     public IStatusClient Status { get; }
 }

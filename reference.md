@@ -1743,6 +1743,412 @@ await client.Rewards.UpdateAsync(
 </dl>
 </details>
 
+## Webhook Subscriptions
+<details><summary><code>client.WebhookSubscriptions.<a href="/src/Leal/WebhookSubscriptions/WebhookSubscriptionsClient.cs">GetApiV1AccountsAccountIdWebhookSubscriptionsAsync</a>(GetApiV1AccountsAccountIdWebhookSubscriptionsRequest { ... }) -> WithRawResponseTask&lt;IEnumerable&lt;GetApiV1AccountsAccountIdWebhookSubscriptionsResponseItem&gt;&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns every webhook subscription for the store, oldest first. Signing secrets are not included; fetch a single subscription to read its secret.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.WebhookSubscriptions.GetApiV1AccountsAccountIdWebhookSubscriptionsAsync(
+    new GetApiV1AccountsAccountIdWebhookSubscriptionsRequest { AccountId = 1 }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `GetApiV1AccountsAccountIdWebhookSubscriptionsRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.WebhookSubscriptions.<a href="/src/Leal/WebhookSubscriptions/WebhookSubscriptionsClient.cs">PostApiV1AccountsAccountIdWebhookSubscriptionsAsync</a>(PostApiV1AccountsAccountIdWebhookSubscriptionsRequest { ... }) -> WithRawResponseTask&lt;PostApiV1AccountsAccountIdWebhookSubscriptionsResponse&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Subscribes a URL to one or more events. The response includes the signing `secret`; store it to
+verify deliveries. The URL must be publicly reachable over https.
+
+Events: `customer.created`, `customer.updated`, `customer_card.created`, `stamp.earned`, `stamp.removed`, `reward.unlocked`, `reward.redeemed`, or `*` for all of them.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.WebhookSubscriptions.PostApiV1AccountsAccountIdWebhookSubscriptionsAsync(
+    new PostApiV1AccountsAccountIdWebhookSubscriptionsRequest
+    {
+        AccountId = 1,
+        TargetUrl = "target_url",
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `PostApiV1AccountsAccountIdWebhookSubscriptionsRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.WebhookSubscriptions.<a href="/src/Leal/WebhookSubscriptions/WebhookSubscriptionsClient.cs">GetApiV1AccountsAccountIdWebhookSubscriptionsIdAsync</a>(GetApiV1AccountsAccountIdWebhookSubscriptionsIdRequest { ... }) -> WithRawResponseTask&lt;GetApiV1AccountsAccountIdWebhookSubscriptionsIdResponse&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns a single subscription, including its signing secret and the result of the most recent delivery.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.WebhookSubscriptions.GetApiV1AccountsAccountIdWebhookSubscriptionsIdAsync(
+    new GetApiV1AccountsAccountIdWebhookSubscriptionsIdRequest { AccountId = 1, Id = 1 }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `GetApiV1AccountsAccountIdWebhookSubscriptionsIdRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.WebhookSubscriptions.<a href="/src/Leal/WebhookSubscriptions/WebhookSubscriptionsClient.cs">DeleteApiV1AccountsAccountIdWebhookSubscriptionsIdAsync</a>(DeleteApiV1AccountsAccountIdWebhookSubscriptionsIdRequest { ... }) -> WithRawResponseTask</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Stops deliveries and deletes the subscription. This cannot be undone.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.WebhookSubscriptions.DeleteApiV1AccountsAccountIdWebhookSubscriptionsIdAsync(
+    new DeleteApiV1AccountsAccountIdWebhookSubscriptionsIdRequest { AccountId = 1, Id = 1 }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `DeleteApiV1AccountsAccountIdWebhookSubscriptionsIdRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.WebhookSubscriptions.<a href="/src/Leal/WebhookSubscriptions/WebhookSubscriptionsClient.cs">PatchApiV1AccountsAccountIdWebhookSubscriptionsIdAsync</a>(PatchApiV1AccountsAccountIdWebhookSubscriptionsIdRequest { ... }) -> WithRawResponseTask&lt;PatchApiV1AccountsAccountIdWebhookSubscriptionsIdResponse&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Changes the URL, events, label or payload format, or turns the subscription off and on. Re-enabling a subscription that was disabled for failing clears its failure state.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.WebhookSubscriptions.PatchApiV1AccountsAccountIdWebhookSubscriptionsIdAsync(
+    new PatchApiV1AccountsAccountIdWebhookSubscriptionsIdRequest { AccountId = 1, Id = 1 }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `PatchApiV1AccountsAccountIdWebhookSubscriptionsIdRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.WebhookSubscriptions.<a href="/src/Leal/WebhookSubscriptions/WebhookSubscriptionsClient.cs">PostApiV1AccountsAccountIdWebhookSubscriptionsIdRotateSecretAsync</a>(PostApiV1AccountsAccountIdWebhookSubscriptionsIdRotateSecretRequest { ... }) -> WithRawResponseTask&lt;PostApiV1AccountsAccountIdWebhookSubscriptionsIdRotateSecretResponse&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Replaces the subscription's signing secret. Deliveries are signed with the new secret straight away, so update your receiver at the same time.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.WebhookSubscriptions.PostApiV1AccountsAccountIdWebhookSubscriptionsIdRotateSecretAsync(
+    new PostApiV1AccountsAccountIdWebhookSubscriptionsIdRotateSecretRequest
+    {
+        AccountId = 1,
+        Id = 1,
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `PostApiV1AccountsAccountIdWebhookSubscriptionsIdRotateSecretRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.WebhookSubscriptions.<a href="/src/Leal/WebhookSubscriptions/WebhookSubscriptionsClient.cs">PostApiV1AccountsAccountIdWebhookSubscriptionsIdTestAsync</a>(PostApiV1AccountsAccountIdWebhookSubscriptionsIdTestRequest { ... }) -> WithRawResponseTask&lt;PostApiV1AccountsAccountIdWebhookSubscriptionsIdTestResponse&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Immediately sends a signed `webhook.test` event to the subscription's URL and reports what
+happened, so you can check your endpoint and signature verification without waiting for real
+activity. Test events are not retried and do not count towards disabling the subscription.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.WebhookSubscriptions.PostApiV1AccountsAccountIdWebhookSubscriptionsIdTestAsync(
+    new PostApiV1AccountsAccountIdWebhookSubscriptionsIdTestRequest { AccountId = 1, Id = 1 }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `PostApiV1AccountsAccountIdWebhookSubscriptionsIdTestRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## Status
 <details><summary><code>client.Status.<a href="/src/Leal/Status/StatusClient.cs">CheckAsync</a>() -> WithRawResponseTask&lt;CheckStatusResponse&gt;</code></summary>
 <dl>
