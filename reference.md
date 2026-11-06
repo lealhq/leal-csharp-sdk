@@ -397,7 +397,9 @@ await client.Cards.UpdateAsync(
 <dd>
 
 Returns a paginated list of customers for the store. Use the `search` parameter to filter
-by name, email, phone, card code (barcode), or external reference ID. Alternatively, pass
+by name, email, phone, card code (barcode), or external reference ID. A scanned wallet pass
+QR can be passed as it is: newer passes hold a link with the card code after the `#`, and
+that is matched to the card exactly. Alternatively, pass
 `source` AND `external_id` together to perform an exact lookup by an external reference -
 the response will contain at most one customer.
 </dd>
@@ -831,8 +833,10 @@ await client.CustomerCards.RedeemAsync(
 <dl>
 <dd>
 
-Adds stamps to a customer's loyalty card. Triggers ledger entries, wallet pass updates,
-and push notifications. Pass `skip_notifications` to stamp silently.
+Adds stamps to a customer's loyalty card. Triggers ledger entries (`entry_type` `api`),
+wallet pass updates, and push notifications. Pass `skip_notifications` to stamp silently.
+Call it for real visits or purchases: if this customer joined with a friend's invite, the
+first call pays out the referral to both of them.
 </dd>
 </dl>
 </dd>
@@ -1815,7 +1819,7 @@ await client.WebhookSubscriptions.GetApiV1AccountsAccountIdWebhookSubscriptionsA
 Subscribes a URL to one or more events. The response includes the signing `secret`; store it to
 verify deliveries. The URL must be publicly reachable over https.
 
-Events: `customer.created`, `customer.updated`, `customer_card.created`, `stamp.earned`, `stamp.removed`, `reward.unlocked`, `reward.redeemed`, or `*` for all of them.
+Events: `customer.created`, `customer.updated`, `customer_card.created`, `stamp.earned`, `stamp.removed`, `reward.unlocked`, `reward.redeemed`, `referral.created`, `referral.rewarded`, or `*` for all of them.
 </dd>
 </dl>
 </dd>

@@ -72,6 +72,30 @@ public record GetCardsResponse : IJsonOnDeserialized
     public required string Name { get; set; }
 
     /// <summary>
+    /// What the wallet pass QR holds: 'link' (the customer's invite link with the card code after the #, readable by the Leal scanner and by `search`) or 'code' (the bare card code). Cards created before referrals use 'code'
+    /// </summary>
+    [JsonPropertyName("qr_style")]
+    public required string QrStyle { get; set; }
+
+    /// <summary>
+    /// Stamps the invited friend gets when the referral pays out
+    /// </summary>
+    [JsonPropertyName("referee_stamps")]
+    public required double RefereeStamps { get; set; }
+
+    /// <summary>
+    /// Whether customers can invite friends from the back of their pass. A referral pays out when the store first stamps the friend's card for a visit (a scan, or the API/POS), never for signing up
+    /// </summary>
+    [JsonPropertyName("referrals_enabled")]
+    public required bool ReferralsEnabled { get; set; }
+
+    /// <summary>
+    /// Stamps the inviting customer gets when the referral pays out
+    /// </summary>
+    [JsonPropertyName("referrer_stamps")]
+    public required double ReferrerStamps { get; set; }
+
+    /// <summary>
     /// Number of rewards defined for this card
     /// </summary>
     [JsonPropertyName("rewards_count")]

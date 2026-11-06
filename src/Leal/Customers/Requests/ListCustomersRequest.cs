@@ -13,7 +13,7 @@ public record ListCustomersRequest
     public required int AccountId { get; set; }
 
     /// <summary>
-    /// Search query to filter customers by name, email, phone, card code (barcode), or external reference ID
+    /// Search query to filter customers by name, email, phone, card code (barcode, or the full scanned QR text), or external reference ID
     /// </summary>
     [JsonIgnore]
     public string? Search { get; set; }

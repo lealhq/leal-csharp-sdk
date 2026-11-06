@@ -696,8 +696,10 @@ public partial class CustomerCardsClient : ICustomerCardsClient
     }
 
     /// <summary>
-    /// Adds stamps to a customer's loyalty card. Triggers ledger entries, wallet pass updates,
-    /// and push notifications. Pass `skip_notifications` to stamp silently.
+    /// Adds stamps to a customer's loyalty card. Triggers ledger entries (`entry_type` `api`),
+    /// wallet pass updates, and push notifications. Pass `skip_notifications` to stamp silently.
+    /// Call it for real visits or purchases: if this customer joined with a friend's invite, the
+    /// first call pays out the referral to both of them.
     /// </summary>
     /// <example><code>
     /// await client.CustomerCards.StampAsync(

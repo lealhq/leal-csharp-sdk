@@ -28,6 +28,15 @@ public class GetTest : BaseMockServerTest
               "issued_at": "issued_at",
               "pass_installed": true,
               "progress_percentage": 1.1,
+              "referral_url": "referral_url",
+              "referrals_count": 1.1,
+              "referred_by": {
+                "customer_card_id": 1.1,
+                "customer_id": 1,
+                "referral_id": 1.1,
+                "rewarded_at": "rewarded_at",
+                "status": "status"
+              },
               "stamps_count": 1,
               "stamps_remaining": 1,
               "status": "status",

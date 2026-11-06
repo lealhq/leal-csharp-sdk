@@ -48,6 +48,30 @@ public record CreateCardsRequestCard : IJsonOnDeserialized
     public required string Name { get; set; }
 
     /// <summary>
+    /// What the wallet pass QR holds. Defaults to 'link' for new cards
+    /// </summary>
+    [JsonPropertyName("qr_style")]
+    public CreateCardsRequestCardQrStyle? QrStyle { get; set; }
+
+    /// <summary>
+    /// Stamps the invited friend gets on their first stamped visit (&gt;= 0 and &lt; stamps_required, default 1)
+    /// </summary>
+    [JsonPropertyName("referee_stamps")]
+    public double? RefereeStamps { get; set; }
+
+    /// <summary>
+    /// Let customers invite friends from the back of their pass (default false)
+    /// </summary>
+    [JsonPropertyName("referrals_enabled")]
+    public bool? ReferralsEnabled { get; set; }
+
+    /// <summary>
+    /// Stamps the inviting customer gets when the friend's first visit is stamped (&gt;= 0 and &lt; stamps_required, default 1)
+    /// </summary>
+    [JsonPropertyName("referrer_stamps")]
+    public double? ReferrerStamps { get; set; }
+
+    /// <summary>
     /// Whether wallet passes show the member name field
     /// </summary>
     [JsonPropertyName("show_member_field")]

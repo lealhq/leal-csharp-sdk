@@ -48,6 +48,30 @@ public record UpdateCardsRequestCard : IJsonOnDeserialized
     public string? Name { get; set; }
 
     /// <summary>
+    /// What the wallet pass QR holds. Changing it refreshes installed passes; passes still showing the old QR keep scanning
+    /// </summary>
+    [JsonPropertyName("qr_style")]
+    public UpdateCardsRequestCardQrStyle? QrStyle { get; set; }
+
+    /// <summary>
+    /// Stamps the invited friend gets (&gt;= 0 and &lt; stamps_required)
+    /// </summary>
+    [JsonPropertyName("referee_stamps")]
+    public double? RefereeStamps { get; set; }
+
+    /// <summary>
+    /// Let customers invite friends from the back of their pass. Installed passes are refreshed, as for any card change
+    /// </summary>
+    [JsonPropertyName("referrals_enabled")]
+    public bool? ReferralsEnabled { get; set; }
+
+    /// <summary>
+    /// Stamps the inviting customer gets (&gt;= 0 and &lt; stamps_required)
+    /// </summary>
+    [JsonPropertyName("referrer_stamps")]
+    public double? ReferrerStamps { get; set; }
+
+    /// <summary>
     /// Whether wallet passes show the member name field
     /// </summary>
     [JsonPropertyName("show_member_field")]

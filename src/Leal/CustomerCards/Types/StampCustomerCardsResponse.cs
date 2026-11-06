@@ -84,6 +84,21 @@ public record StampCustomerCardsResponse : IJsonOnDeserialized
     public required double ProgressPercentage { get; set; }
 
     /// <summary>
+    /// The customer's invite link while the card has referrals on (null otherwise). Safe to share: it names the customer as referrer and can't be used to stamp or redeem
+    /// </summary>
+    [JsonPropertyName("referral_url")]
+    public required string ReferralUrl { get; set; }
+
+    /// <summary>
+    /// Friends this customer has invited who joined, rewarded or not
+    /// </summary>
+    [JsonPropertyName("referrals_count")]
+    public required double ReferralsCount { get; set; }
+
+    [JsonPropertyName("referred_by")]
+    public required StampCustomerCardsResponseReferredBy ReferredBy { get; set; }
+
+    /// <summary>
     /// Stamps collected so far
     /// </summary>
     [JsonPropertyName("stamps_count")]
@@ -108,7 +123,7 @@ public record StampCustomerCardsResponse : IJsonOnDeserialized
     public required string UpdatedAt { get; set; }
 
     /// <summary>
-    /// Public identifier used in wallet pass URLs
+    /// The card code: what the store scanner reads from the wallet pass QR and what staff can type in. Treat it like a membership number; it can be used to stamp and redeem
     /// </summary>
     [JsonPropertyName("uuid")]
     public required string Uuid { get; set; }

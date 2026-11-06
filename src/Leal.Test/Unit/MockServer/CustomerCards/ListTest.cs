@@ -24,6 +24,7 @@ public class ListTest : BaseMockServerTest
                 "issued_at": "issued_at",
                 "pass_installed": true,
                 "progress_percentage": 1.1,
+                "referral_url": "referral_url",
                 "stamps_count": 1,
                 "stamps_remaining": 1,
                 "status": "status",

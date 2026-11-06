@@ -29,6 +29,7 @@ card's wallet links from your own application.
   - [Additional Headers](#additional-headers)
   - [Additional Query Parameters](#additional-query-parameters)
   - [Additional Body Properties](#additional-body-properties)
+  - [Forward Compatible Enums](#forward-compatible-enums)
 - [Contributing](#contributing)
 
 ## Documentation
@@ -235,6 +236,35 @@ var response = await client.CustomerCards.StampAsync(
         }
     }
 );
+```
+
+### Forward Compatible Enums
+
+This SDK uses forward-compatible enums that can handle unknown values gracefully.
+
+```csharp
+using Leal;
+
+// Using a built-in value
+var createCardsRequestCardQrStyle = CreateCardsRequestCardQrStyle.Link;
+
+// Using a custom value
+var customCreateCardsRequestCardQrStyle = CreateCardsRequestCardQrStyle.FromCustom("custom-value");
+
+// Using in a switch statement
+switch (createCardsRequestCardQrStyle.Value)
+{
+    case CreateCardsRequestCardQrStyle.Values.Link:
+        Console.WriteLine("Link");
+        break;
+    default:
+        Console.WriteLine($"Unknown value: {createCardsRequestCardQrStyle.Value}");
+        break;
+}
+
+// Explicit casting
+string createCardsRequestCardQrStyleString = (string)CreateCardsRequestCardQrStyle.Link;
+CreateCardsRequestCardQrStyle createCardsRequestCardQrStyleFromString = (CreateCardsRequestCardQrStyle)"link";
 ```
 
 ## Contributing
