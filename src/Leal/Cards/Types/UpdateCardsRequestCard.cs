@@ -12,6 +12,12 @@ public record UpdateCardsRequestCard : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     /// <summary>
+    /// Apple Wallet layout. 'poster' is iOS 27's full-bleed layout; older iPhones show the store card. Defaults to 'store_card'
+    /// </summary>
+    [JsonPropertyName("apple_pass_style")]
+    public UpdateCardsRequestCardApplePassStyle? ApplePassStyle { get; set; }
+
+    /// <summary>
     /// Up to two extra front-of-pass fields. Blank values are ignored.
     /// </summary>
     [JsonPropertyName("auxiliary_fields")]
@@ -28,6 +34,18 @@ public record UpdateCardsRequestCard : IJsonOnDeserialized
     /// </summary>
     [JsonPropertyName("expires_at")]
     public string? ExpiresAt { get; set; }
+
+    /// <summary>
+    /// Up to two buttons, shown as Featured Actions under the iOS 27 poster and as links in Google Wallet. Send an empty array to remove them.
+    /// </summary>
+    [JsonPropertyName("featured_actions")]
+    public IEnumerable<string>? FeaturedActions { get; set; }
+
+    /// <summary>
+    /// How the logo sits on Google Wallet. Defaults to 'round'
+    /// </summary>
+    [JsonPropertyName("google_logo_style")]
+    public UpdateCardsRequestCardGoogleLogoStyle? GoogleLogoStyle { get; set; }
 
     /// <summary>
     /// Optional header text displayed on the card

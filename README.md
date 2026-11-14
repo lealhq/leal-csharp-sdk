@@ -246,25 +246,25 @@ This SDK uses forward-compatible enums that can handle unknown values gracefully
 using Leal;
 
 // Using a built-in value
-var createCardsRequestCardQrStyle = CreateCardsRequestCardQrStyle.Link;
+var createCardsRequestCardApplePassStyle = CreateCardsRequestCardApplePassStyle.StoreCard;
 
 // Using a custom value
-var customCreateCardsRequestCardQrStyle = CreateCardsRequestCardQrStyle.FromCustom("custom-value");
+var customCreateCardsRequestCardApplePassStyle = CreateCardsRequestCardApplePassStyle.FromCustom("custom-value");
 
 // Using in a switch statement
-switch (createCardsRequestCardQrStyle.Value)
+switch (createCardsRequestCardApplePassStyle.Value)
 {
-    case CreateCardsRequestCardQrStyle.Values.Link:
-        Console.WriteLine("Link");
+    case CreateCardsRequestCardApplePassStyle.Values.StoreCard:
+        Console.WriteLine("StoreCard");
         break;
     default:
-        Console.WriteLine($"Unknown value: {createCardsRequestCardQrStyle.Value}");
+        Console.WriteLine($"Unknown value: {createCardsRequestCardApplePassStyle.Value}");
         break;
 }
 
 // Explicit casting
-string createCardsRequestCardQrStyleString = (string)CreateCardsRequestCardQrStyle.Link;
-CreateCardsRequestCardQrStyle createCardsRequestCardQrStyleFromString = (CreateCardsRequestCardQrStyle)"link";
+string createCardsRequestCardApplePassStyleString = (string)CreateCardsRequestCardApplePassStyle.StoreCard;
+CreateCardsRequestCardApplePassStyle createCardsRequestCardApplePassStyleFromString = (CreateCardsRequestCardApplePassStyle)"store_card";
 ```
 
 ## Contributing

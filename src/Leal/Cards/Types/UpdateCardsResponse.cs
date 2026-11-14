@@ -12,6 +12,12 @@ public record UpdateCardsResponse : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     /// <summary>
+    /// Apple Wallet layout: 'store_card' (the classic layout) or 'poster' (iOS 27 full-bleed artwork; iPhones on iOS 26 or earlier show the store card)
+    /// </summary>
+    [JsonPropertyName("apple_pass_style")]
+    public required string ApplePassStyle { get; set; }
+
+    /// <summary>
     /// ISO 8601 timestamp when the card was archived, or null if active
     /// </summary>
     [JsonPropertyName("archived_at")]
@@ -46,6 +52,21 @@ public record UpdateCardsResponse : IJsonOnDeserialized
     /// </summary>
     [JsonPropertyName("expires_at")]
     public required string ExpiresAt { get; set; }
+
+    /// <summary>
+    /// Up to two buttons: Featured Actions under the iOS 27 poster, and links under the pass in Google Wallet
+    /// </summary>
+    [JsonPropertyName("featured_actions")]
+    public IEnumerable<string> FeaturedActions { get; set; } = new List<string>();
+
+    /// <summary>
+    /// How the logo sits on Google Wallet: 'round' (the square icon in a circle, with the store name) or 'wide' (the logo in place of the circle and store name)
+    /// </summary>
+    [JsonPropertyName("google_logo_style")]
+    public required string GoogleLogoStyle { get; set; }
+
+    [JsonPropertyName("google_wallet")]
+    public required UpdateCardsResponseGoogleWallet GoogleWallet { get; set; }
 
     /// <summary>
     /// Optional header text displayed on the card
